@@ -1,0 +1,26 @@
+{% extends 'request/model.html' %}
+
+{% block content %}
+
+
+<form action="{% url 'request-confirmation' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="customer" value="{{ forms.fields.customer.value }}">
+    <input type="textarea" name="request" value="{{ forms.fields.request.value }}">
+    <select name="type_choices">
+        <option value="solo" {% if forms.fields.type_choices.value == 'solo' %} selected {% endif %}>Unique</option>
+        <option value="trio" {% if forms.fields.type_choices.value == 'trio' %} selected {% endif %}>Tridium</option>
+        <option value="nine" {% if forms.fields.type_choices.value == 'nine' %} selected {% endif %}>Neuvaine</option>
+        <option value="month" {% if forms.fields.type_choices.value == 'month' %} selected {% endif %}>Trentaine</option>
+    </select>
+    <input type="text" name="hours" value="{{ forms.fields.hours.value }}">
+    <input type="date" name="start_date" value="{{ forms.fields.start_date.value }}">
+    <input type="date" name="end_date" value="{{ forms.fields.end_date.value }}">
+    <input type="submit" value="Confirmer" />
+</form>
+
+
+<!-- <a href="{% url 'request-confirmation' %}">Confirmer</a>&nbsp -->
+<!-- <a href="{% url 'request-create' request.id }">Retour</a> -->
+
+{% endblock %}

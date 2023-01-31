@@ -1,0 +1,10 @@
+{% extends 'request/model.html' %}
+
+{% block content %}
+
+<h2>Demandée par : {{ requests.customer }} <br/>
+Du {{ requests.start_date }} au {{ requests.end_date }} à {{ requests.hours }}<br/>
+Intention : {{ requests.request }}
+
+
+{% endblock %}

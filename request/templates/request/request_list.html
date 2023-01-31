@@ -1,0 +1,16 @@
+{% extends 'request/model.html' %}
+
+{% block content %}
+
+<h1>Liste des demandes</h1>
+<p>
+    <ul>
+        {% for request in lists %}
+            <li>Demandée par : {{ request.customer }} <br/>
+                Du {{ request.start_date }} au {{ request.end_date }} à {{ request.hours }}<br/>
+                {{ request.request }}
+            </li>
+    </ul>
+</p>
+
+{% endblock %}
