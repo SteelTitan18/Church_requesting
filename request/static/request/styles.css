@@ -1,17 +1,42 @@
 html{
-	margin: 0;
-	padding: 0;
   background-image: url("image_albumphotos.jpeg");
   background-size: cover;
 }
 
-header
-{
-    font-size : 50px;
-    padding-top : 20px;
-    padding-bottom : 20px;
-    margin-bottom : 100px;
-    color : black;
+header{
+		margin: 0;
+		padding: 1%;
+    background-color: red;
+		text-align: center;
+		color: white;
+}
+
+main{
+	padding-top: 10%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: white;
+	text-align: center;
+  height: 1000px;
+}
+
+.church{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	font-size: 50px;
+	background-color: green;
+	margin-top: 90px;
+	margin-left: 30%;
+	margin-right: 30%;
+	height: 150px;
+	border-radius: 20px;
+  padding-top: 10px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
 }
 
 .bouton

@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from request.models import Church_request
+from request.models import Church
 from request.forms import RequestForm
 from django.shortcuts import redirect
 from datetime import *
+
+def church_main(request, church_id):
+    church = Church.objects.get(id=church_id)
+    return render(request, 'request/church_main.html', {'church': church})
 
 def request_create(request):
     if request.method == 'POST':
@@ -43,7 +48,8 @@ def request_list(request):
     return render(request, 'request/request_list.html', {'lists' : list})
 
 def acceuil(request):
-    return render(request, 'request/acceuil.html')
+    church_list = Church.objects.all()
+    return render(request, 'request/acceuil.html', {'list' : church_list})
 
 def confirmation(request):
     if request.method == 'POST':

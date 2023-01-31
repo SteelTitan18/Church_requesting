@@ -20,9 +20,10 @@ from django import forms
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/create', views.request_create, name='request-create'),
+    path('<int:church_id>/menu/', views.church_main, name='church-main'),
+    path('create', views.request_create, name='request-create'),
     path('', views.acceuil, name='request-acceuil'),
-    path('/<str:_customer>/<slug:requet>/<str:_type_choices>/<slug:_hours>/<slug:_start_date>/<slug:_end_date>/confirm', views.request_confirm, name='request-confirm'),
-    path('/<int:request_id>/detail', views.request_detail, name='request-detail'),
-    path('/confirmation', views.confirmation, name='request-confirmation'),
+    path('<str:_customer>/<slug:requet>/<str:_type_choices>/<slug:_hours>/<slug:_start_date>/<slug:_end_date>/confirm', views.request_confirm, name='request-confirm'),
+    path('<int:request_id>/detail', views.request_detail, name='request-detail'),
+    path('confirmation', views.confirmation, name='request-confirmation'),
 ]
