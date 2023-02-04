@@ -1,0 +1,10 @@
+{% extends 'request/model.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+
+{% render_field form.skills class="form-control" id="input-skill" data-role="tagsinput" %}
+<script src="{% static 'plugins/tags-input/tagsinput.js' %}"></script>
+
+{% endblock %}

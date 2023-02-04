@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="">
@@ -6,18 +7,21 @@
     <meta charset="utf-8">
     <title>DEMANDE DE MESSE</title>
     <link rel="stylesheet" href="{% static 'request/styles.css' %}" />
+    <script src="../../static/request/styles.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'plugins/tags-input/tagsinput.css' %}" /> -->
   </head>
 
   <body>
-    <header>
-      <h1>DEMANDE DE MESSE</h1>
+    <header id="_header">
+      <h1>{{ header_title }}</h1>
     </header>
 
     <main>
-      {% block content%}{% endblock %}
+      {% block content %}{% endblock %}
     </main>
 
     <footer>
+      Contactez - nous !
     </footer>
   </body>
 

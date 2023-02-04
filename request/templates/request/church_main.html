@@ -2,6 +2,13 @@
 
 {% block content %}
 
-
+<nav>
+  <ul>
+    <a class="nav-element" href="{% url 'request-acceuil' %}"><li>Acceuil</li></a>
+    <a class="nav-element" href="{% url 'request-create' church.id %}"><li>Demande de messe</li></a>
+    <a class="nav-element" href=""><li>Annonces</li></a>
+    <a class="nav-element" href=""><li>Boîte à suggestions</li></a>
+  </ul>
+</nav>
 
 {% endblock %}
