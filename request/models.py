@@ -9,7 +9,7 @@ class Church (models.Model):
     ('second', 'Station secondaire')])
     archdiocese = models.fields.CharField(verbose_name="Archidiocèse ", max_length=30)
     priest = models.fields.CharField(verbose_name="Curé ", max_length=100)
-    mother_parish = models.fields.CharField(verbose_name="Curé ", max_length=100, blank=True, null=True)
+    mother_parish = models.fields.CharField(verbose_name="Paroisse mère ", max_length=100, blank=True, null=True)
 
 class Church_request(models.Model):
     customer = models.fields.CharField(verbose_name="Demandée par " ,max_length=30)
@@ -21,18 +21,18 @@ class Church_request(models.Model):
     hours = models.fields.CharField(verbose_name="Horaires ", max_length=255)
     start_date = models.fields.DateField(verbose_name="Date de début ", default=date.today)
     end_date = models.fields.DateField(verbose_name="Date de fin ", blank=True, null=True)
-    church = models.ForeignKey(Church, on_delete=models.CASCADE, related_name="church")
+    request_church = models.ForeignKey(Church, on_delete=models.CASCADE, related_name="request_church")
 
     def __str__(self):
         return f'{self.content}'
 
 class Suggestion(models.Model):
     content = models.fields.CharField(verbose_name="Contenu ", max_length=200)
-    church = models.ForeignKey(Church, on_delete=models.CASCADE, related_name="request.Suggestion.church+")
+    suggestion_church = models.ForeignKey(Church, on_delete=models.CASCADE, related_name="suggestion_church")
     tags = TaggableManager()
 
 class Announcement(models.Model):
     title = models.fields.CharField(verbose_name="Contenu ", max_length=50)
     content = models.fields.CharField(verbose_name="Contenu ", max_length=200)
     illustration = models.ImageField(default=None, blank=True, null=True, upload_to='images/illustrations/%Y/%m/%d/')
-    church = models.ForeignKey(Church, on_delete=models.CASCADE, related_name="request.Announcement.church+")
+    announcement_church = models.ForeignKey(Church, on_delete=models.CASCADE, related_name="announcement_church")

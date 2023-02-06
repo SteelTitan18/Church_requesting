@@ -1,0 +1,12 @@
+{% extends 'request/model.html' %}
+
+{% block content %}
+
+{% for announcement in announcement_list %}
+  <div class="announce">
+    {{ announcement.title }}<br/>
+    {{ announcement.content }}
+  </div>
+{% endfor %}
+
+{% endblock %}

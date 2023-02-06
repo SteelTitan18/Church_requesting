@@ -21,6 +21,7 @@ from django import forms
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('test/', views.tagsInputTest, name='test'),
+    path('<int:church_id>/suggestions', views.suggestion_create, name='suggestions'),
     path('<int:church_id>/announcement', views.announcement, name='announcement'),
     path('<int:church_id>/menu', views.church_main, name='church-main'),
     path('<int:church_id>/request', views.request_create, name='request-create'),

@@ -25,7 +25,8 @@ def church_main(request, church_id):
 #
 #     return render(request, 'request/test.html', {'form':form})
 
-def suggestion_create(request):
+def suggestion_create(request, church_id):
+    church = Church.objects.get(id = church_id)
     if request.method == "POST":
         form = SuggestionForm(request.POST)
         if form.is_valid():
@@ -36,7 +37,7 @@ def suggestion_create(request):
     else:
         form = SuggestionForm()
 
-    return render(resquest) #A compléter
+    return render(request, 'request/suggestions.html', {'form':form, 'header_title':church.name + " : Boîte à suggestions"})
 
 
 def request_create(request, church_id):
@@ -56,17 +57,23 @@ def request_create(request, church_id):
     return render(request, 'request/request_create.html', {'church': church, 'form':form, 'header_title' : church.name + " : Demande de messe" })
 
 def announcement(request, church_id):
-    church = Church.objects.get(id=church_id)
-    if request.method == 'POST':
-        announcement = Announcement()
-        announcement.church = church
-        form = AnnouncementForm(request.POST, instance=announcement)
-        if form.is_valid():
-            form.save()
-    else:
-        form = AnnouncementForm()
+    _church = Church.objects.get(id=church_id)
+    announcement_list = list(Announcement.objects.filter(announcement_church_id = _church.id))
 
-    return render(request, 'request/announcement.html', {'church':church, 'form':form, 'header_title':church.name + " : Annonces"})
+    return render(request, 'request/announcement.html', {'announcement_list':announcement_list, 'header_title':_church.name + " : Annonces"})
+
+# def announcement_admin(request, church_id):
+#     church = Church.objects.get(id=church_id)
+#     if request.method == 'POST':
+#         announcement = Announcement()
+#         announcement.church = church
+#         form = AnnouncementForm(request.POST, instance=announcement)
+#         if form.is_valid():
+#             form.save()
+#     else:
+#         form = AnnouncementForm()
+#
+#     return render(request, 'request/announcement.html', {'church':church, 'form':form, 'header_title':church.name + " : Annonces"})
 
 
 def request_detail(request, request_id):
