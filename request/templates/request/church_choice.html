@@ -1,0 +1,15 @@
+{% extends 'request/model.html' %}
+
+{% block content %}
+<!-- <script src="../../static/request/styles.js"></script> -->
+
+<h1>Choisissez une église</h1>
+{% for church in list %}
+  <a class="church_link" href="{% url 'church-main' church.id %}">
+    <div class="church">
+      <span class="church_name">{{ church.status }} {{ church.name }}</span>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}
