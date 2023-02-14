@@ -2,6 +2,15 @@
 
 {% block content %}
 
+<nav>
+  <ul>
+    <a class="nav-element" href="{% url 'request-user-choice' %}"><li>Acceuil</li></a>
+    <a class="nav-element" href="{% url 'request-create' church.id %}"><li>Demande de messe</li></a>
+    <a class="nav-element" href="{% url 'announcement' church.id %}"><li>Annonces</li></a>
+    <a class="nav-element" href="{% url 'suggestions' church.id %}"><li>Boîte à suggestions</li></a>
+  </ul>
+</nav>
+
 {% for announcement in announcement_list %}
   <div class="announce">
     {{ announcement.title }}<br/>

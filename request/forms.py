@@ -1,20 +1,20 @@
 from django import forms
-from datetime import *
-from request.models import Church_request
-from request.models import Suggestion
-from request.models import Church
 from request.models import Announcement
+from request.models import ChurchRequest
+from request.models import Suggestion
 
 
 class RequestForm(forms.ModelForm):
     class Meta:
-        model = Church_request
+        model = ChurchRequest
         fields = ['customer', 'request', 'type_choices', 'hours', 'start_date', 'end_date']
+
 
 class SuggestionForm(forms.ModelForm):
     class Meta:
         model = Suggestion
-        fields = ['content', 'tags']
+        fields = ['content']
+
 
 class AnnouncementForm(forms.ModelForm):
     class Meta:

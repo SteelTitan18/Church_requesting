@@ -2,9 +2,8 @@
 
 {% block content %}
 
-<h2>Demandée par : {{ requests.customer }} <br/>
+<h2>Demandée par : {{ requests.customer }}</h2> <br/>
 Du {{ requests.start_date }} au {{ requests.end_date }} à {{ requests.hours }}<br/>
 Intention : {{ requests.request }}
-
 
 {% endblock %}
